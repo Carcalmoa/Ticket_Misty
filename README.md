@@ -2,6 +2,8 @@
 
 Web para mostrar el funcionamiento de una base de datos relacion en MYSQL. En esta base de datos modelamos un e-commerce y realizamos todos los procedimientos necesarios para que una API pueda hacer consultas sencillas.
 
+## Estadísticas de la base de datos
+![image](https://github.com/miguipasto/Ticket-Misty/assets/127023319/064dac86-9111-4d03-a323-159aaf917ab1)
 ## Capturas de la WEB
 ![image](https://github.com/miguipasto/Ticket-Misty/assets/127023319/26b60925-642b-4619-83eb-78ffe38d14e5)
 ![image](https://github.com/miguipasto/Ticket-Misty/assets/127023319/586ec7e0-4ded-4f24-ae43-270257bf123e)
