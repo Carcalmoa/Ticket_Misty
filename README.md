@@ -8,10 +8,10 @@ Web para mostrar el funcionamiento de una base de datos relacion en MYSQL. En es
 - https://github.com/miguipasto
 
 ## Modelo Entidad-Asociación
-![image](https://github.com/miguipasto/Ticket-Misty/assets/127023319/064dac86-9111-4d03-a323-159aaf917ab1)
+![Modela E-A FINAL](https://github.com/Carcalmoa/Ticket_Misty/assets/118133979/c1a8b6bd-eb12-41dd-9ba9-7598e0b8d5f7)
 
 ## Modelo Relacional
-![image](https://github.com/miguipasto/Ticket-Misty/assets/127023319/064dac86-9111-4d03-a323-159aaf917ab1)
+![Modelo Relacional](https://github.com/Carcalmoa/Ticket_Misty/assets/118133979/74057ffa-9a2e-4a9d-9b8d-d1292d507871)
 
 ## Estadísticas de la base de datos
 ![image](https://github.com/miguipasto/Ticket-Misty/assets/127023319/064dac86-9111-4d03-a323-159aaf917ab1)
