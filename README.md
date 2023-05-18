@@ -6,6 +6,7 @@ Web para mostrar el funcionamiento de una base de datos relacion en MYSQL. En es
 - https://github.com/Carcalmoa
 - https://github.com/henarmarino
 - https://github.com/miguipasto
+- https://github.com/naoufal21
 
 ## Modelo Entidad-Asociación
 ![Modela E-A FINAL](https://github.com/Carcalmoa/Ticket_Misty/assets/118133979/c1a8b6bd-eb12-41dd-9ba9-7598e0b8d5f7)
