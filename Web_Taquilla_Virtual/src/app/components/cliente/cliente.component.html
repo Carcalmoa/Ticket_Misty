@@ -1,0 +1,15 @@
+<div id="todo">
+<div id="todoEntradasCompradas">
+    <div id="entradasCompradas" class="interactivo" *ngFor="let compra of entradasCompradas">
+        <div id="infoEntradas">
+            <h1>{{compra.NombreEspectaculo}}</h1>
+            <p>Nombre del Recinto : {{compra.NombreRecinto}}</p>
+            <p>Lugar : {{compra.Lugar}}</p>
+            <p>Ubicacion : {{compra.Ubicacion}}</p>
+            <p>Fecha Evento : {{compra.FechaEvento}}</p>
+        </div>
+        <div id="botones">
+            <button class="botonAnular" (click)="anularCompra(compra)">Anular Entrada</button>
+        </div>
+    </div>
+</div></div>

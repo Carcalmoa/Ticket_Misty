@@ -1,0 +1,523 @@
+<div id="todo">
+
+    <div id="primeraFila">
+        <div id="boton">
+            <button class="botonListar" (click)="localidadesOfertadasEvento()">Localidades Ofertadas por un
+                Evento</button>
+        </div>
+        <div id="boton">
+            <button class="botonListar" (click)="localidadesOfertadasPrecio()">Localidades Ofertadas a un
+                Precio</button>
+        </div>
+        <div id="boton">
+            <button class="botonListar" (click)="localidadesOfertadasEventoTipo()">Localidades Ofertadas por un Evento y
+                Tipo de Usuario</button>
+        </div>
+        <div id="boton">
+            <button class="botonListar" (click)="mejoresClientes()">Mejores Clientes</button>
+        </div>
+        <div id="boton">
+            <button class="botonListar" (click)="eventosEstado()">Eventos segun Estado</button>
+        </div>
+    </div>
+    <div id="segundaFila">
+        <div id="boton" class="botonFecha">
+            <button class="botonListar" (click)="showDateInput = true">Localidades Vendidas por Fecha</button>
+            <input *ngIf="showDateInput" class="date-input" type="date" [(ngModel)]="fechaBusqueda"
+                (change)="listarVendidasFecha()">
+        </div>
+        <div id="boton">
+            <button class="botonListar" (click)="localidadesVendidasEvento()">Localidades Vendidas para un
+                Evento</button>
+        </div>
+        <div id="boton">
+            <button class="botonListar" (click)="localidadesVendidasPorRecinto()">Localidades Vendidas por
+                Recinto</button>
+        </div>
+        <div id="boton">
+            <button class="botonListar" (click)="localidadesNoVendidasEvento()"> Localidades No Vendidas de un
+                Evento</button>
+        </div>
+        <div id="boton">
+            <button class="botonListar" (click)="localidadesVendidasUltimaHora()">Localidades Vendidas en la Última
+                Hora</button>
+        </div>
+    </div>
+    <div id="terceraFila">
+        <div id="boton">
+            <button class="botonListar" (click)="buscarParticipante()">Participantes de un Espectáculo en un
+                Lugar</button>
+        </div>
+
+        <div id="boton">
+            <button class="botonListar" (click)="recintosConMasOfertaTipo()">Recintos que más ofertan para un Tipo de
+                Usuario</button>
+        </div>
+        <div id="boton">
+            <button class="botonListar" (click)="espectaculosTipo()">Espectáculos para un Tipo de Usuario</button>
+        </div>
+        <div id="boton">
+            <button class="botonListar" (click)="tiposEspectaculo()">Tipos de Usuarios de un Espectáculo</button>
+        </div>
+        <div id="boton">
+            <button class="botonListar" (click)="localidadesDeterioradasRecinto()">Localidades Deterioradas para un
+                Recinto</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- Menus -->
+
+<div id="menu_seleccionar_evento">
+    <div id="menu_wrapper">
+        <div id="close-tab">
+            <div id="close" (click)="cerrarMenu()"></div>
+        </div>
+        <div id="botonesEventos">
+            <div id="menu" *ngFor="let evento of eventos" (click)="eventoSeleccionado(evento)">
+                <button type="button" class="botonListar" id="{{evento}}">{{evento.NombreEspectaculo}}<p>
+                        {{evento.NombreRecinto}}</p></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="menu_seleccionar_evento_tipo">
+    <div id="menu_wrapper">
+        <div id="close-tab">
+            <div id="close" (click)="cerrarMenu()"></div>
+        </div>
+        <div id="botonesEventos">
+            <div id="menu" *ngFor="let evento of eventos" (click)="eventoSeleccionadoParaEventoTipo(evento)">
+                <button type="button" class="botonListar" id="{{evento}}">{{evento.NombreEspectaculo}}<p>
+                        {{evento.NombreRecinto}}</p></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="menu_seleccionar_evento_ventas">
+    <div id="menu_wrapper">
+        <div id="close-tab">
+            <div id="close" (click)="cerrarMenu()"></div>
+        </div>
+        <div id="botonesEventos">
+            <div id="menu" *ngFor="let evento of eventos" (click)="eventoSeleccionadoVentas(evento)">
+                <button type="button" class="botonListar" id="{{evento}}">{{evento.NombreEspectaculo}}<p>
+                        {{evento.NombreRecinto}}</p></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="menu_seleccionar_recinto">
+    <div id="menu_wrapper">
+        <div id="close-tab">
+            <div id="close" (click)="cerrarMenu()"></div>
+        </div>
+        <div id="botonesEventos">
+            <div id="menu" *ngFor="let recinto of recintos" (click)="recintoSeleccionado(recinto)">
+                <button type="button" class="botonListar" id="{{recinto}}">{{recinto.NombreRecinto}}<p>{{recinto.Lugar}}
+                    </p></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="menu_seleccionar_espectaculo_tipo">
+    <div id="menu_wrapper">
+        <div id="close-tab">
+            <div id="close" (click)="cerrarMenu()"></div>
+        </div>
+        <div id="botonesEventos">
+            <div id="menu" *ngFor="let espectaculo of espectaculos" (click)="espectaculoTipoSeleccionado(espectaculo)">
+                <button type="button" class="botonListar"
+                    id="{{espectaculo}}">{{espectaculo.NombreEspectaculo}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="menu_seleccionar_recinto_vendidas">
+    <div id="menu_wrapper">
+        <div id="close-tab">
+            <div id="close" (click)="cerrarMenu()"></div>
+        </div>
+        <div id="botonesEventos">
+            <div id="menu" *ngFor="let recinto of recintos" (click)="recintoSeleccionadoVendidas(recinto)">
+                <button type="button" class="botonListar" id="{{recinto}}">{{recinto.NombreRecinto}}<p>{{recinto.Lugar}}
+                    </p></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="menu_seleccionar_evento_no_vendidas">
+    <div id="menu_wrapper">
+        <div id="close-tab">
+            <div id="close" (click)="cerrarMenu()"></div>
+        </div>
+        <div id="botonesEventos">
+            <div id="menu" *ngFor="let evento of eventos" (click)="eventosConLocalidadesNoVendidas(evento)">
+                <button type="button" class="botonListar" id="{{evento}}">{{evento.NombreEspectaculo}}<p>
+                        {{evento.NombreRecinto}}</p></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="menu_seleccionar_lugares">
+    <div id="menu_wrapper">
+        <div id="close-tab">
+            <div id="close" (click)="cerrarMenu()"></div>
+        </div>
+        <div id="botonesEventos">
+            <div id="menu" *ngFor="let lugar of lugares" (click)="eventosParticipante(lugar)">
+                <button type="button" class="botonListar" id="{{lugar}}">{{lugar.Lugar}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Tablas -->
+
+<div id="tablaOfertadas" class="tablas" style="display: none;">
+    <mat-table [dataSource]="ofertadasEvento" matSort>
+
+        <ng-container matColumnDef="Ubicacion">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Ubicacion</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Ubicacion}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Nombre Recinto">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Recinto</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NombreRecinto}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Nombre Espectaculo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Espectáculo</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NombreEspectaculo}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Tipo de Usuario">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de Usuario</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.TipoUsuario}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Precio">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Precio</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Precio}}€</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Fecha Evento">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Evento</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.FechaEvento}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumnsOfertadas"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumnsOfertadas;"></mat-row>
+    </mat-table>
+</div>
+
+<div id="eventosEstado" class="tablas" style="display: none;">
+    <mat-table [dataSource]="eventosSegunEstado" matSort>
+
+        <ng-container matColumnDef="Nombre Espectaculo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Espectáculo</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NombreEspectaculo}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Nombre Recinto">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Recinto</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NombreRecinto}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Lugar">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Lugar</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Lugar}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Fecha Evento">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Evento</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.FechaEvento}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Precio Base">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Precio Base</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.PrecioBase}}€</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Estado">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Estado</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Estado}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Aforo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Aforo</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Aforo}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedEventosEstado"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedEventosEstado;"></mat-row>
+    </mat-table>
+</div>
+
+<div id="tablaVendidas" class="tablas" style="display: none;">
+    <h1>Entradas Vendidas totales : {{vendidasTotales}}</h1>
+
+    <mat-table [dataSource]="vendidasEspectaculo" matSort>
+        <ng-container matColumnDef="Nombre Espectaculo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Espectáculo</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NombreEspectaculo}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Ubicacion">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Ubicacion</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Ubicacion}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Nombre Recinto">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Recinto</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NombreRecinto}}</mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="Fecha Evento">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Evento</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.FechaEvento}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Tipo de Usuario">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de Usuario</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.TipoUsuario}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Precio">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Precio</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Precio}}€</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumnsVendidas"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumnsVendidas;"></mat-row>
+    </mat-table>
+</div>
+
+<div id="tablalocalidadesDeterioradas" class="tablas" style="display: none;">
+    <mat-table [dataSource]="localidadesDeterioradas" matSort>
+
+        <ng-container matColumnDef="Ubicacion">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Ubicacion</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Ubicacion}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Nombre Recinto">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Recinto</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NombreRecinto}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Lugar">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Lugar</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Lugar}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Deteriorado">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Deteriorado</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Deteriorado}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumnsDeterioriadas"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumnsDeterioriadas;"></mat-row>
+    </mat-table>
+</div>
+
+<div id="tabla_espectaculos" class="tablas" style="display: none;">
+    <mat-table [dataSource]="espectaculos" matSort>
+
+        <ng-container matColumnDef="Nombre Espectaculo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Espectáculo</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NombreEspectaculo}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Tipo de Espectaculo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo Espectaculo</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.TipoEspectaculo}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Tipo de Usuario">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de Usuario</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.TipoUsuario}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedEspectaculosTipo"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedEspectaculosTipo;"></mat-row>
+    </mat-table>
+</div>
+
+<div id="tabla_espectaculos_tipo" class="tablas" style="display: none;">
+    <mat-table [dataSource]="espectaculos" matSort>
+
+        <ng-container matColumnDef="Nombre Espectaculo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Espectáculo</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NombreEspectaculo}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Tipo de Usuario">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de Usuario</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.TipoUsuario}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedEspectaculosTipoUsers"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedEspectaculosTipoUsers;"></mat-row>
+    </mat-table>
+</div>
+
+
+<div id="tabla_mejores_clientes" class="tablas" style="display: none;">
+    <mat-table [dataSource]="clientes" matSort>
+
+        <ng-container matColumnDef="Nombre Cliente">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Cliente</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NombreCliente}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Primer Apellido">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Primer Apellido</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.PrimerApellido}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="DNI">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>DNI</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.DNI}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Compras Realizadas">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Compras Realizadas</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.ComprasRealizadas}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedMejoresClientes"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedMejoresClientes;"></mat-row>
+    </mat-table>
+</div>
+
+<div id="tabla_recintos_oferta" class="tablas" style="display: none;">
+    <mat-table [dataSource]="recintosOferta" matSort>
+
+        <ng-container matColumnDef="Nombre Recinto">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Recinto</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NombreRecinto}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Localidades Usuario">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Localidades Usuario</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.LocalidadesUsuario}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedOfertaRecintos"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedOfertaRecintos;"></mat-row>
+    </mat-table>
+</div>
+
+<div id="tablaVendidasFecha" class="tablas" style="display: none;">
+
+    <mat-table [dataSource]="vendidasEspectaculoFecha" matSort>
+        <ng-container matColumnDef="Nombre Espectaculo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Espectáculo</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NombreEspectaculo}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Ubicacion">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Ubicacion</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Ubicacion}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Nombre Recinto">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Recinto</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NombreRecinto}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Fecha Evento">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Evento</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.FechaEvento}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Tipo de Usuario">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de Usuario</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.TipoUsuario}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumnsVendidasFecha"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumnsVendidasFecha;"></mat-row>
+    </mat-table>
+</div>
+
+<div id="tablaVendidasUltimaHora" class="tablas" style="display: none;">
+    <h1>Entradas Vendidas totales : {{vendidasTotales}}</h1>
+
+    <mat-table [dataSource]="vendidasUltimraHora" matSort>
+        <ng-container matColumnDef="Nombre Espectaculo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Espectáculo</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NombreEspectaculo}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Ubicacion">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Ubicacion</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Ubicacion}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Nombre Recinto">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Recinto</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NombreRecinto}}</mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="Fecha Evento">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Compra</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.FechaCompra}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Tipo de Usuario">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de Usuario</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.TipoUsuario}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumnsVendidasUltimaHora"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumnsVendidasUltimaHora;"></mat-row>
+    </mat-table>
+</div>
+
+<div id="tablaEventosParticipante" class="tablas" style="display: none;">
+    <mat-table [dataSource]="eventosSegunEstado" matSort>
+
+        <ng-container matColumnDef="Nombre Espectaculo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Espectáculo</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NombreEspectaculo}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Nombre Recinto">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Recinto</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NombreRecinto}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Lugar">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Lugar</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Lugar}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Fecha Evento">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Evento</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.FechaEvento}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Precio Base">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Precio Base</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.PrecioBase}}€</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedEventosParticiante"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedEventosParticiante;"></mat-row>
+    </mat-table>
+</div>

@@ -1,0 +1,55 @@
+
+.botonAnular{
+    padding: 10px;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 15px;
+    background-color: transparent;
+    cursor: pointer;   
+    border-radius: 5px;
+    
+}
+.botonAnular:hover{
+    color: white;
+    background-color: red;
+    
+}
+#todo{
+    background-image: url(/assets/abc.jpg);
+    background-size: 100%;
+}
+
+/* Cuadros de las compradas */
+#todoEntradasCompradas{
+    display: grid;
+    margin: 1%;
+    padding: 1%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap : 2%;
+    grid-row-gap : 2%;
+}
+
+#entradasCompradas{
+    display : grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr 1fr;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.9); 
+}
+
+#infoEntradas{
+    display: inline-block;
+    padding: 4%;
+}
+#botones{
+    display: inline-block;
+    padding-left: 30%;
+}
+
+h1{
+    font-weight: 600;
+}
+p{
+    font-size: 16px;
+    font-weight: 500;
+}

@@ -1,0 +1,13 @@
+<div id="Eventos">
+  <div id="cuadroEventos" *ngFor="let evento of eventos">
+    <div id="izquierdaEvento">
+      <h1 id="NombreEspectaculo">{{evento.NombreEspectaculo}}</h1>
+      <p id="NombreRecinto">Nombre Recinto: {{evento.NombreRecinto}}</p>
+      <p id="Lugar">Lugar: {{evento.Lugar}}</p>
+      <p id="Fecha">Fecha: {{evento.FechaEvento}}</p>
+      <p id="PrecioBase">Precio Base: {{evento.PrecioBase}}€</p>
+      <p id="Estado">Estado: {{evento.Estado}}</p>
+      <p id="Aforo">Aforo: {{evento.Aforo}}</p>
+    </div>
+  </div>
+</div>

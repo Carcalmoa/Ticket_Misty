@@ -1,0 +1,59 @@
+/* * ***Barra Navegador***** */ */
+nav {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    top: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    
+  }
+  
+  ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  #boton_nav {
+    border: none;
+    box-shadow: none;
+    display: block;
+    padding: 0 15px;
+    line-height: 50px;
+    text-decoration: none;
+    color: black;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 25px;
+    display: flex;
+    background-color: white;
+  }
+  
+  #boton_nav:hover {
+    background-color: black;
+    color: white;
+  }
+  
+  .logo_nav {
+    align-items: center;
+    padding: 0 15px;
+  }
+  
+  .logo_nav img {
+    margin-top : 1%;
+    margin-left: 72%;
+    float: right;
+    height: 160px;
+    position: fixed;
+  }

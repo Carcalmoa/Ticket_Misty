@@ -1,0 +1,19 @@
+version: '3'
+services:
+
+  backend:
+    build:
+      context: ./API
+      dockerfile: Dockerfile
+    image: api
+    container_name: api
+    network_mode: host
+
+
+  frontend:
+    build:
+      context: ./Web_Taquilla_Virtual/
+      dockerfile: Dockerfile
+    image: web_taquilla_virtual
+    container_name: web_taquilla_virtual
+    network_mode: host

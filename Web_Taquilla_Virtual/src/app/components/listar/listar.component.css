@@ -1,0 +1,168 @@
+* {
+    width: 100%;
+    height: 98%;
+}
+
+#todo {
+    padding: 2%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-row-gap: 4%;
+    background-image: url(/assets/abc.jpg);
+    background-size: 100%;
+}
+
+#primeraFila,
+#segundaFila,
+#terceraFila {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 2%;
+}
+
+#boton {
+    display: inline-block;
+}
+
+.botonListar {
+    padding: 10px;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 23px;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+
+}
+
+.botonListar:hover {
+    color: white;
+    background-color: #009975;
+
+}
+
+/* Menu seleccionar evento*/
+
+#menu_seleccionar_evento,
+#menu_seleccionar_evento_tipo,
+#menu_seleccionar_evento_ventas,
+#menu_seleccionar_recinto,
+#menu_seleccionar_espectaculo_tipo,
+#menu_seleccionar_recinto_vendidas,
+#menu_seleccionar_evento_no_vendidas,
+#menu_seleccionar_lugares {
+    background-color: rgb(100, 100, 100, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 10;
+    display: none;
+}
+
+#menu_wrapper {
+    background-color: white;
+    position: absolute;
+    margin: 2%;
+    width: 96%;
+    height: 92%;
+    z-index: 11;
+    display: grid;
+    grid-template-rows: 2fr 20fr;
+    grid-template-columns: 1fr;
+    overflow-x: auto;
+}
+
+
+.botonFecha {
+    position: relative;
+}
+
+.date-input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+#close-tab {
+    display: inline;
+    margin-bottom: 4%;
+}
+
+#botonesEventos {
+    display: grid;
+    padding: 1%;
+    grid-template-columns: repeat(7, 1fr);
+    grid-column-gap: 2%;
+    grid-row-gap: 0.1%;
+}
+
+
+
+#close {
+    display: grid;
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.7;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#close:hover {
+    opacity: 1;
+}
+
+#close:before,
+#close:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 25px;
+    width: 1px;
+    background-color: #333;
+}
+
+#close:before {
+    transform: rotate(45deg);
+}
+
+#close:after {
+    transform: rotate(-45deg);
+}
+
+#close-tab {
+    display: grid;
+}
+
+/* Tabla Ofertadas */
+.tablas {
+    padding: 2%;
+}
+
+h1 {
+    padding-left: 1%;
+    max-height: 20px;
+}
+
+p {
+    padding-top: 5%;
+    font-size: 16px;
+}
+
+.tablas mat-header-cell {
+    font-size: 20px;
+}
+
+.tablas mat-cell {
+    font-size: 17px;
+}
